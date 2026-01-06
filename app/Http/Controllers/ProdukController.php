@@ -61,7 +61,6 @@ class ProdukController extends Controller
     
     public function update(Request $request, $id)
     {
-        //validate form
         $request->validate([
             'nama_produk' => ['required', 'max:100'],
             'kategori_id' => ['required'],
@@ -71,7 +70,6 @@ class ProdukController extends Controller
             'gambar' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048']
         ]);
 
-        //get product by ID
         $produk = Produk::findOrFail($id);
 
         //Data yang akan di-update
@@ -83,7 +81,7 @@ class ProdukController extends Controller
             'deskripsi' => $request->deskripsi,
         ];
 
-        //check if image is uploaded
+        //Cek apakah gambar sudah di-upload
         if ($request->hasFile('gambar')) {
             //Hapus gambar lama
             if ($produk->gambar) {
@@ -109,9 +107,14 @@ class ProdukController extends Controller
         return redirect()->route('admin.produk.index')->with('success', 'Data berhasil dihapus!');
     }
 
-    public function indexUser()
+    public function indexUser(Request $request)
     {
-        $produks = \App\Models\Produk::all();
+        $search = $request->search;
+
+        $produks = Produk::when($search, function ($query) use ($search) {
+            return $query->where('nama_produk', 'like', '%' . $search . '%');
+        })->get();
+
         return view('pages.user.dashboard', compact('produks'));
     }
 

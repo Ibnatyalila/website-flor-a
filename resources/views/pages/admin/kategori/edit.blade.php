@@ -15,6 +15,6 @@
             <input type="text" name="nama_kategori" class="form-control" value="{{ old('nama_kategori', $kategori->nama_kategori) }}" placeholder="Masukkan nama kategori">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('kategori.index') }}" class="btn btn-secondary">Kembali</a>
+        <a href="{{ route('admin.kategori.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 @endsection

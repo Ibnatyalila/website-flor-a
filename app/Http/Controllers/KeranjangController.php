@@ -13,7 +13,7 @@ class KeranjangController extends Controller
         return view('pages.user.keranjang', compact('keranjang'));
     }
 
-    public function add($id)
+    public function add(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
         $keranjang = session()->get('keranjang', []);
@@ -30,7 +30,7 @@ class KeranjangController extends Controller
         }
 
         session()->put('keranjang', $keranjang);
-        return redirect()->back()->with('success', 'Added! 😆');
+        return redirect()->back()->with('success', 'Bucket ' . $produk->nama_produk . ' berhasil masuk keranjang!');
     }
 
     public function checkout() {

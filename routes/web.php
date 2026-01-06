@@ -26,15 +26,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/pesanan', [OrderController::class, 'indexAdmin'])->name('pesanan.index');
     });
 
-    // Route::middleware('role:1')->prefix('admin')->name('admin.')->group(function () {
-    //     Route::get('/dashboard', function () {
-    //         return view('pages.admin.dashboard');
-    //     })->name('dashboard');
-
-    //     Route::resource('/kategori', KategoriController::class);
-    //     Route::resource('/produk', ProdukController::class);
-    // });
-
     Route::middleware('role:2')->prefix('user')->name('user.')->group(function () {
         Route::get('/dashboard', [ProdukController::class, 'indexUser'])->name('dashboard');
         Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');

@@ -46,12 +46,6 @@
         background-color: #0056b3;
     }
 </style>
-
-<!-- Page Heading -->
-        <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        </div> -->
-
         <div class="cream_section layout_padding">
          <div class="container">
             <div class="row">
@@ -86,9 +80,9 @@
                         <h6 class="strawberry_text">{{ $p->nama_produk }}</h6>
                         
                         <div class="cart_bt" style="background-color: #007bff; border-radius: 5px; margin-top: 10px;">
-                           <form action="{{ route('user.keranjang.add', $p->id) }}" method="POST">
+                           <form action="{{ route('user.keranjang.add', $p->id) }}" method="POST" class="form-tambah-keranjang">
                               @csrf
-                              <button type="submit" class="btn btn-primary btn-block rounded-pill font-weight-bold">
+                              <button type="button" class="btn btn-primary btn-block btn-tambah rounded-pill font-weight-bold">
                                     <i class="fas fa-cart-plus mr-2"></i>Tambah ke keranjang
                               </button>
                            </form>
@@ -98,7 +92,28 @@
                   @endforeach
                </div>
             </div>
-            <!-- <div class="seemore_bt"><a href="#">See More</a></div> -->
          </div>
       </div>
 @endsection
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.btn-tambah').forEach(button => {
+         button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            Swal.fire({
+               title: 'Berhasil!',
+               text: "Produk telah ditambahkan ke keranjang.",
+               icon: 'success',
+               confirmButtonText: 'OK',
+               confirmButtonColor: '#3085d6',
+            }).then((result) => {
+               if (result.isConfirmed) {
+                  this.closest('.form-tambah-keranjang').submit();
+               }
+            });
+         });
+      });
+   });
+</script>

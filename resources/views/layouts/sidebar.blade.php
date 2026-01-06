@@ -3,7 +3,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-spa"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Floréa</div>
             </a>
@@ -46,25 +46,6 @@
                     </a>
                 </li>
             @endif
-
-            <!-- @if(Auth::user()->role_id == 1)
-                <hr class="sidebar-divider">
-                <div class="sidebar-heading">Manajemen Data</div>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.produk.index') }}">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Bucket</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.kategori.index') }}">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Kategori</span>
-                    </a>
-                </li>
-            @endif -->
             
             @if(Auth::user()->role_id == 2)
                 <div class="sidebar-heading">Menu Member</div>
@@ -72,12 +53,6 @@
                     <a class="nav-link" href="{{ route('user.keranjang.index') }}">
                         <i class="fas fa-fw fa-shopping-cart"></i>
                         <span>Keranjang</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.checkout') }}">
-                        <i class="fas fa-fw fa-credit-card"></i>
-                        <span>Pembayaran</span>
                     </a>
                 </li>
             @endif
