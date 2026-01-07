@@ -17,7 +17,7 @@
     .cream_img img {
         width: 100%;
         height: 250px;
-        object-fit: cover; /* Biar foto nggak penyet */
+        object-fit: cover;
         border-radius: 10px;
     }
     .price_text {
@@ -30,7 +30,7 @@
         font-size: 1.1rem;
         color: #333;
         margin: 10px 0;
-        height: 50px; /* Biar sejajar meski nama panjang */
+        height: 50px;
     }
     .cart_bt button {
         background-color: #007bff;
